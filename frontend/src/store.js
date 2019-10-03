@@ -121,3 +121,14 @@ const messageModule = {
         }
     }
 }
+
+
+const store = new Vuex.Store({
+    modules: {
+        auth: authModule,
+        message: messageModule
+    }
+})
+
+
+export default store
