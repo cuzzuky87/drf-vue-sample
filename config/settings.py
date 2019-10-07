@@ -28,11 +28,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'djoser',
+    'corsheaders',
     'apiv1.apps.Apiv1Config',
     'shop.apps.ShopConfig',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -117,10 +119,16 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':[
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    ],
 }
 
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES':{'JWT'},
+    'AUTH_HEADER_TYPES':('JWT',),
     'ACCESS_TOKEN_LIFETIME':timedelta(minutes=30),
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+)

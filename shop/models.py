@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 
 
-class Book(models.Models):
+class Book(models.Model):
     """本モデル"""
 
     class Meta:
